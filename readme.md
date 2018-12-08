@@ -12,13 +12,22 @@ This is a working example of several things:
 # To build:
 `docker build -t awsdocker:latest .`
 
-# To run: 
+# To run the enclosed awsscript.sh: 
 ```bash
 awsdocker docker run -t -i --rm \
 -e AWS_KEY='<redacted>' \
 -e SECRET_KEY='<redacted>' \
 -e SESSION_TOKEN='<redacted>' \
 --name awsdocker_container awsdocker awsscript.sh
+```
+
+# To run, starting at the commandline, for debugging, or building on:
+```bash
+awsdocker docker run -t -i --rm \
+-e AWS_KEY='<redacted>' \
+-e SECRET_KEY='<redacted>' \
+-e SESSION_TOKEN='<redacted>' \
+--name awsdocker_container awsdocker bash
 ```
 
 * creates a container named 'awsdocker_container',

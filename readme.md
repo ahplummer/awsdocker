@@ -12,7 +12,7 @@ This is a working example of several things:
 # To build:
 `docker build -t awsdocker:latest .`
 
-# To run the enclosed awsscript.sh: 
+# To run the enclosed awsscript.sh, and immediately exit: 
 ```bash
 awsdocker docker run -t -i --rm \
 -e AWS_KEY='<redacted>' \
@@ -20,6 +20,16 @@ awsdocker docker run -t -i --rm \
 -e SESSION_TOKEN='<redacted>' \
 --name awsdocker_container awsdocker awsscript.sh
 ```
+# To run the enclosed pgsqlscript, and immediately exit: 
+```bash
+awsdocker docker run -t -i --rm \
+-e PGUSER='<redacted>' \
+-e PGDB='<redacted>'
+-e PGPASS='<redacted>' \
+-e PGINSTANCE='<redacted>' \
+--name awsdocker_container awsdocker pgsqlscript
+```
+
 
 # To run, starting at the commandline, for debugging, or building on:
 ```bash
@@ -27,6 +37,10 @@ awsdocker docker run -t -i --rm \
 -e AWS_KEY='<redacted>' \
 -e SECRET_KEY='<redacted>' \
 -e SESSION_TOKEN='<redacted>' \
+-e PGUSER='<redacted>' \
+-e PGDB='<redacted>'
+-e PGPASS='<redacted>' \
+-e PGINSTANCE='<redacted>' \
 --name awsdocker_container awsdocker bash
 ```
 
@@ -36,6 +50,13 @@ awsdocker docker run -t -i --rm \
 * Attaches to TTY (-t)
 * THe name of the image to create a container from
 * Command to run: 'awsscript.sh'
+
+## BASH Shenanigans
+* PGSQL - to test PGSQL related up-time, a script is in 'src' that will test Postgres connectivity.  
+`./pgsqlscript.sh`
+
+* AWS - to test AWS connectivity, a script is in 'src':
+`./awsscript.sh`
 
 # To remove image:
 `docker rmi awsdocker`

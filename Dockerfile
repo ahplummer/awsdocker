@@ -3,7 +3,8 @@ FROM ubuntu:18.04
 RUN apt-get update && apt-get install -y \
     python3-pip \
     groff \
-    wget 
+    wget \
+    postgresql-client-10
 
 RUN pip3 install awscli --upgrade
 RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
